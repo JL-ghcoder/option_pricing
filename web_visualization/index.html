@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Option Pricing Interface</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 引入必要的外部库 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    
+    <style>
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .sub-title {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .chart-container {
+            margin-top: var(--spacing);
+            height: 400px;  /* 修改高度 */
+            width: 100%;    /* 添加宽度 */
+            position: relative;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f5f6fa;
+            --card-background: #ffffff;
+            --border-radius: 8px;
+            --spacing: 20px;
+            --success-color: #2ecc71;
+            --warning-color: #f1c40f;
+            --danger-color: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            padding: var(--spacing);
+            color: var(--primary-color);
+            min-height: 100vh;
+        }
+
+        #app {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: var(--spacing);
+        }
+
+        .module {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: var(--spacing);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .module:hover {
+            transform: translateY(-2px);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .input-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: var(--spacing);
+        }
+
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background-color: #fff;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        input:hover {
+            border-color: var(--secondary-color);
+        }
+
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            margin-top: var(--spacing);
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            font-weight: 500;
+            border-left: 4px solid var(--secondary-color);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .chart-container {
+            margin-top: var(--spacing);
+            height: 300px;
+            position: relative;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            #app {
+                grid-template-columns: 1fr;
+            }
+
+            .input-group {
+                grid-template-columns: 1fr;
+            }
+
+            .module {
+                margin-bottom: var(--spacing);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1 class="main-title">Computational Finance Coursework</h1>
+        <div class="sub-title">ID: 24004122</div>
+    </div>
+
+    <div id="app">
+        <!-- 障碍期权模块 -->
+        <div class="module">
+            <h2>Barrier Option Pricing</h2>
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <label>Initial Price (S0):</label>
+                    <input type="number" v-model.number="barrierParams.S0">
+                </div>
+                <div class="input-wrapper">
+                    <label>Strike Price (K):</label>
+                    <input type="number" v-model.number="barrierParams.K">
+                </div>
+                <div class="input-wrapper">
+                    <label>Barrier (B):</label>
+                    <input type="number" v-model.number="barrierParams.B">
+                </div>
+                <div class="input-wrapper">
+                    <label>Maturity (T):</label>
+                    <input type="number" v-model.number="barrierParams.T">
+                </div>
+                <div class="input-wrapper">
+                    <label>Risk-free Rate (r):</label>
+                    <input type="number" v-model.number="barrierParams.r">
+                </div>
+                <div class="input-wrapper">
+                    <label>Volatility (sigma):</label>
+                    <input type="number" v-model.number="barrierParams.sigma">
+                </div>
+                <div class="input-wrapper">
+                    <label>Dividend Rate (div):</label>
+                    <input type="number" v-model.number="barrierParams.div">
+                </div>
+                <div class="input-wrapper">
+                    <label>Number of Steps:</label>
+                    <input type="number" v-model.number="barrierParams.num_steps">
+                </div>
+                <div class="input-wrapper">
+                    <label>Number of Paths:</label>
+                    <input type="number" v-model.number="barrierParams.num_paths">
+                </div>
+            </div>
+            <button @click="calculateBarrierPrice">Calculate Barrier Option Price</button>
+            <div v-if="barrierPrice !== null" class="result">
+                Result: {{ barrierPrice }}
+            </div>
+        </div>
+
+        <!-- 有限差分法模块 -->
+        <div class="module">
+            <h2>Finite Difference Pricing</h2>
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <label>Initial Price (S0):</label>
+                    <input type="number" v-model.number="fdParams.S0">
+                </div>
+                <div class="input-wrapper">
+                    <label>Strike Price (K):</label>
+                    <input type="number" v-model.number="fdParams.K">
+                </div>
+                <div class="input-wrapper">
+                    <label>Maturity (T):</label>
+                    <input type="number" v-model.number="fdParams.T">
+                </div>
+                <div class="input-wrapper">
+                    <label>Risk-free Rate (r):</label>
+                    <input type="number" v-model.number="fdParams.r">
+                </div>
+                <div class="input-wrapper">
+                    <label>Volatility (sigma):</label>
+                    <input type="number" v-model.number="fdParams.sigma">
+                </div>
+                <div class="input-wrapper">
+                    <label>Dividend Rate (div):</label>
+                    <input type="number" v-model.number="fdParams.div">
+                </div>
+                <div class="input-wrapper">
+                    <label>Grid Size:</label>
+                    <input type="number" v-model.number="fdParams.grid_size">
+                </div>
+            </div>
+            <button @click="calculateFDCall" style="margin-right: 10px;">Calculate Call Option</button>
+            <button @click="calculateFDPut">Calculate Put Option</button>
+            <div v-if="fdCallPrice !== null" class="result">
+                Call Price: {{ fdCallPrice }}
+            </div>
+            <div v-if="fdPutPrice !== null" class="result">
+                Put Price: {{ fdPutPrice }}
+            </div>
+        </div>
+
+        <!-- 敏感性分析模块 -->
+        <div class="module">
+            <h2>Sensitivity Analysis</h2>
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <label>Initial Price (S0):</label>
+                    <input type="number" v-model.number="sensitivityParams.S0">
+                </div>
+                <div class="input-wrapper">
+                    <label>Strike Price (K):</label>
+                    <input type="number" v-model.number="sensitivityParams.K">
+                </div>
+                <div class="input-wrapper">
+                    <label>Barrier (B):</label>
+                    <input type="number" v-model.number="sensitivityParams.B">
+                </div>
+                <div class="input-wrapper">
+                    <label>Maturity (T):</label>
+                    <input type="number" v-model.number="sensitivityParams.T">
+                </div>
+                <div class="input-wrapper">
+                    <label>Risk-free Rate (r):</label>
+                    <input type="number" v-model.number="sensitivityParams.r">
+                </div>
+                <div class="input-wrapper">
+                    <label>Dividend Rate (div):</label>
+                    <input type="number" v-model.number="sensitivityParams.div">
+                </div>
+                <div class="input-wrapper">
+                    <label>Start Volatility:</label>
+                    <input type="number" v-model.number="sensitivityParams.vol_start">
+                </div>
+                <div class="input-wrapper">
+                    <label>End Volatility:</label>
+                    <input type="number" v-model.number="sensitivityParams.vol_end">
+                </div>
+                <div class="input-wrapper">
+                    <label>Number of Points:</label>
+                    <input type="number" v-model.number="sensitivityParams.num_points">
+                </div>
+                <div class="input-wrapper">
+                    <label>Number of Paths:</label>
+                    <input type="number" v-model.number="sensitivityParams.num_paths">
+                </div>
+            </div>
+            <button @click="calculateSensitivity">Analyze Sensitivity</button>
+            <div v-if="sensitivityResults.length > 0" class="result">
+                <div style="margin-bottom: 10px;">Sensitivity Analysis Results:</div>
+                <div v-for="(result, index) in sensitivityResults" :key="index" style="margin-bottom: 5px;">
+                    Volatility: {{ result.volatility.toFixed(4) }}, Price: {{ result.price.toFixed(4) }}
+                </div>
+            </div>
+            <div class="chart-container" v-show="sensitivityResults.length > 0">
+                <canvas ref="chartCanvas" style="width: 100%; height: 100%;"></canvas>
+            </div>
+        </div>
+
+        <!-- 收益概率计算模块 -->
+        <div class="module">
+            <h2>Probability Analysis</h2>
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <label>Initial Price (S0):</label>
+                    <input type="number" v-model.number="probabilityParams.S0">
+                </div>
+                <div class="input-wrapper">
+                    <label>Strike Price (K):</label>
+                    <input type="number" v-model.number="probabilityParams.K">
+                </div>
+                <div class="input-wrapper">
+                    <label>Barrier (B):</label>
+                    <input type="number" v-model.number="probabilityParams.B">
+                </div>
+                <div class="input-wrapper">
+                    <label>Maturity (T):</label>
+                    <input type="number" v-model.number="probabilityParams.T">
+                </div>
+                <div class="input-wrapper">
+                    <label>Risk-free Rate (r):</label>
+                    <input type="number" v-model.number="probabilityParams.r">
+                </div>
+                <div class="input-wrapper">
+                    <label>Volatility (sigma):</label>
+                    <input type="number" v-model.number="probabilityParams.sigma">
+                </div>
+                <div class="input-wrapper">
+                    <label>Dividend Rate (div):</label>
+                    <input type="number" v-model.number="probabilityParams.div">
+                </div>
+                <div class="input-wrapper">
+                    <label>Threshold:</label>
+                    <input type="number" v-model.number="probabilityParams.threshold">
+                </div>
+                <div class="input-wrapper">
+                    <label>Number of Paths:</label>
+                    <input type="number" v-model.number="probabilityParams.num_paths">
+                </div>
+            </div>
+            <button @click="calculateProbability">Calculate Probability</button>
+            <div v-if="probability !== null" class="result">
+                Probability: {{ (probability * 100).toFixed(2) }}%
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        const { createApp, ref, onMounted } = Vue
+
+        createApp({
+            setup() {
+                
+                const chartCanvas = ref(null)
+                let sensitivityChart = null
+
+                onMounted(() => {
+                    // 初始化时如果已有数据则创建图表
+                    if (sensitivityResults.value.length > 0) {
+                        updateSensitivityChart()
+                    }
+                })
+
+                // 障碍期权参数
+                const barrierParams = ref({
+                    S0: 100.0,
+                    K: 100.0,
+                    B: 120.0,
+                    T: 1.0,
+                    r: 0.05,
+                    sigma: 0.2,
+                    div: 0.0,
+                    num_steps: 252,
+                    num_paths: 100000
+                })
+
+                // 结果存储
+                const barrierPrice = ref(null)
+
+                // 有限差分法参数
+                const fdParams = ref({
+                    S0: 100.0,
+                    K: 100.0,
+                    T: 1.0,
+                    r: 0.05,
+                    sigma: 0.2,
+                    div: 0.0,
+                    grid_size: 100
+                })
+
+                const fdCallPrice = ref(null)
+                const fdPutPrice = ref(null)
+
+                // 敏感性分析参数
+                const sensitivityParams = ref({
+                    S0: 100.0,
+                    K: 100.0,
+                    B: 120.0,
+                    T: 1.0,
+                    r: 0.05,
+                    div: 0.0,
+                    vol_start: 0.1,
+                    vol_end: 0.4,
+                    num_points: 5,
+                    num_paths: 10000
+                })
+
+                const sensitivityResults = ref([])
+
+                // 概率分析参数
+                const probabilityParams = ref({
+                    S0: 100.0,
+                    K: 100.0,
+                    B: 120.0,
+                    T: 1.0,
+                    r: 0.05,
+                    sigma: 0.2,
+                    div: 0.0,
+                    threshold: 5.0,
+                    num_paths: 100000
+                })
+
+                const probability = ref(null)
+
+                // API调用函数
+                async function calculateBarrierPrice() {
+                    try {
+                        const response = await fetch('http://localhost:8000/price/barrier', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(barrierParams.value)
+                        })
+                        const data = await response.json()
+                        barrierPrice.value = data.price
+                    } catch (error) {
+                        console.error('Error:', error)
+                        alert('Failed to calculate barrier option price. Please check the console for details.')
+                    }
+                }
+
+                // API调用函数
+                async function calculateFDCall() {
+                    try {
+                        const response = await fetch('http://localhost:8000/price/finite-difference/call', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(fdParams.value)
+                        })
+                        const data = await response.json()
+                        fdCallPrice.value = data.price
+                    } catch (error) {
+                        console.error('Error:', error)
+                        alert('Failed to calculate call option price. Please check the console for details.')
+                    }
+                }
+
+                async function calculateFDPut() {
+                    try {
+                        const response = await fetch('http://localhost:8000/price/finite-difference/put', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(fdParams.value)
+                        })
+                        const data = await response.json()
+                        fdPutPrice.value = data.price
+                    } catch (error) {
+                        console.error('Error:', error)
+                        alert('Failed to calculate put option price. Please check the console for details.')
+                    }
+                }
+
+                // API调用函数
+                // 修改 calculateSensitivity 函数
+                async function calculateSensitivity() {
+                    try {
+                        const response = await fetch('http://localhost:8000/analysis/sensitivity', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(sensitivityParams.value)
+                        })
+                        const data = await response.json()
+                        sensitivityResults.value = data.data
+                        
+                        // 更新图表
+                        updateSensitivityChart()
+                    } catch (error) {
+                        console.error('Error:', error)
+                        alert('Failed to analyze sensitivity. Please check the console for details.')
+                    }
+                }
+
+                // 修改 updateSensitivityChart 函数
+                async function updateSensitivityChart() {
+                    try {
+                        console.log('Updating chart with data:', sensitivityResults.value)
+                        
+                        // 销毁旧图表
+                        if (sensitivityChart) {
+                            sensitivityChart.destroy()
+                            sensitivityChart = null
+                        }
+
+                        // 等待下一个渲染周期
+                        await Vue.nextTick()
+
+                        const canvas = chartCanvas.value
+                        if (!canvas) {
+                            console.error('Canvas element not found')
+                            return
+                        }
+
+                        const ctx = canvas.getContext('2d')
+                        if (!ctx) {
+                            console.error('Failed to get canvas context')
+                            return
+                        }
+
+                        sensitivityChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: sensitivityResults.value.map(item => item.volatility.toFixed(4)),
+                                datasets: [{
+                                    label: 'Option Price vs Volatility',
+                                    data: sensitivityResults.value.map(item => item.price),
+                                    borderColor: '#3498db',
+                                    backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                                    borderWidth: 2,
+                                    tension: 0.4,
+                                    pointRadius: 4,
+                                    pointHoverRadius: 6,
+                                    fill: true
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                animation: {
+                                    duration: 750,
+                                    easing: 'easeInOutQuart'
+                                },
+                                plugins: {
+                                    title: {
+                                        display: true,
+                                        text: 'Sensitivity Analysis: Price vs Volatility',
+                                        font: {
+                                            size: 16,
+                                            weight: 'bold'
+                                        },
+                                        padding: 20
+                                    },
+                                    legend: {
+                                        position: 'top',
+                                        labels: {
+                                            padding: 20,
+                                            boxWidth: 40
+                                        }
+                                    },
+                                    tooltip: {
+                                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                        titleFont: {
+                                            size: 14
+                                        },
+                                        bodyFont: {
+                                            size: 13
+                                        },
+                                        padding: 12,
+                                        callbacks: {
+                                            label: function(context) {
+                                                return `Price: ${context.parsed.y.toFixed(4)}`
+                                            }
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Volatility',
+                                            font: {
+                                                size: 14,
+                                                weight: 'bold'
+                                            },
+                                            padding: 10
+                                        },
+                                        grid: {
+                                            display: true,
+                                            drawBorder: true,
+                                            drawOnChartArea: true,
+                                            drawTicks: true
+                                        }
+                                    },
+                                    y: {
+                                        title: {
+                                            display: true,
+                                            text: 'Option Price',
+                                            font: {
+                                                size: 14,
+                                                weight: 'bold'
+                                            },
+                                            padding: 10
+                                        },
+                                        beginAtZero: true,
+                                        grid: {
+                                            display: true,
+                                            drawBorder: true,
+                                            drawOnChartArea: true,
+                                            drawTicks: true
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                    } catch (error) {
+                        console.error('Error creating chart:', error)
+                    }
+                }
+
+                // API 调用函数
+                async function calculateProbability() {
+                    try {
+                        const response = await fetch('http://localhost:8000/analysis/probability', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(probabilityParams.value)
+                        })
+                        const data = await response.json()
+                        probability.value = data.probability
+                    } catch (error) {
+                        console.error('Error:', error)
+                        alert('Failed to calculate probability. Please check the console for details.')
+                    }
+                }
+
+
+                return {
+                    barrierParams,
+                    barrierPrice,
+                    calculateBarrierPrice,
+
+                    fdParams,
+                    fdCallPrice,
+                    fdPutPrice,
+                    calculateFDCall,
+                    calculateFDPut,
+
+                    sensitivityParams,
+                    sensitivityResults,
+                    calculateSensitivity,
+                    updateSensitivityChart,
+                    chartCanvas,  // 添加这行
+
+                    probabilityParams,
+                    probability,
+                    calculateProbability
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

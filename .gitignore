@@ -1,0 +1,64 @@
+# 编译生成的二进制文件和中间文件
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.exe
+*.out
+*.dSYM/
+*.pdb
+*.ipdb
+*.exp
+*.log
+
+# CMake 生成的文件
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+CMakeLists.txt.user
+
+# Python 相关
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 虚拟环境
+venv/
+env/
+*.egg-info/
+pip-wheel-metadata/
+Pipfile.lock
+poetry.lock
+
+# Jupyter Notebook 运行时产生的文件
+.ipynb_checkpoints/
+
+# IDE/编辑器相关文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# 日志和调试文件
+logs/
+*.log
+debug/
+*.bak
+*.tmp
+
+# 生成的文档
+docs/_build/
+*.rst~
+*.pdf
+
+# 其他不需要提交的文件
+.DS_Store
+Thumbs.db
+temp_index.html

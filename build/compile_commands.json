@@ -1,0 +1,104 @@
+[
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++  -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -I/Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -I/opt/anaconda3/envs/crypto_pricing/include/python3.10 -isystem /opt/anaconda3/include/python3.12 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -o CMakeFiles/CFCoursework.dir/binding.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/binding.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/binding.cpp",
+  "output": "CMakeFiles/CFCoursework.dir/binding.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++  -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -I/Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -I/opt/anaconda3/envs/crypto_pricing/include/python3.10 -isystem /opt/anaconda3/include/python3.12 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -o CMakeFiles/CFCoursework.dir/src/main.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/main.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/main.cpp",
+  "output": "CMakeFiles/CFCoursework.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++  -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -I/Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -I/opt/anaconda3/envs/crypto_pricing/include/python3.10 -isystem /opt/anaconda3/include/python3.12 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -o CMakeFiles/CFCoursework.dir/src/MonteCarloBarrierOption.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/MonteCarloBarrierOption.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/MonteCarloBarrierOption.cpp",
+  "output": "CMakeFiles/CFCoursework.dir/src/MonteCarloBarrierOption.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++  -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -I/Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -I/opt/anaconda3/envs/crypto_pricing/include/python3.10 -isystem /opt/anaconda3/include/python3.12 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -o CMakeFiles/CFCoursework.dir/src/utils.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/utils.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/utils.cpp",
+  "output": "CMakeFiles/CFCoursework.dir/src/utils.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++  -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -I/Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -I/opt/anaconda3/envs/crypto_pricing/include/python3.10 -isystem /opt/anaconda3/include/python3.12 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -o CMakeFiles/CFCoursework.dir/src/sensitivity_analysis.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/sensitivity_analysis.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/sensitivity_analysis.cpp",
+  "output": "CMakeFiles/CFCoursework.dir/src/sensitivity_analysis.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++  -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -I/Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -I/opt/anaconda3/envs/crypto_pricing/include/python3.10 -isystem /opt/anaconda3/include/python3.12 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -o CMakeFiles/CFCoursework.dir/src/payoff_probability.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/payoff_probability.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/payoff_probability.cpp",
+  "output": "CMakeFiles/CFCoursework.dir/src/payoff_probability.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++  -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -I/Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -I/opt/anaconda3/envs/crypto_pricing/include/python3.10 -isystem /opt/anaconda3/include/python3.12 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -o CMakeFiles/CFCoursework.dir/src/finite_difference_pricer.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/finite_difference_pricer.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/finite_difference_pricer.cpp",
+  "output": "CMakeFiles/CFCoursework.dir/src/finite_difference_pricer.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++  -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -I/Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -I/opt/anaconda3/envs/crypto_pricing/include/python3.10 -isystem /opt/anaconda3/include/python3.12 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -o CMakeFiles/CFCoursework.dir/src/binomial_pricer.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/binomial_pricer.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/binomial_pricer.cpp",
+  "output": "CMakeFiles/CFCoursework.dir/src/binomial_pricer.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++  -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -I/Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -I/opt/anaconda3/envs/crypto_pricing/include/python3.10 -isystem /opt/anaconda3/include/python3.12 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -o CMakeFiles/CFCoursework.dir/test/option_tester.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/test/option_tester.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/test/option_tester.cpp",
+  "output": "CMakeFiles/CFCoursework.dir/test/option_tester.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++ -Doption_pricing_EXPORTS -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -isystem /Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -isystem /opt/anaconda3/envs/crypto_pricing/include/python3.10 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -fPIC -fvisibility=hidden -o CMakeFiles/option_pricing.dir/binding.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/binding.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/binding.cpp",
+  "output": "CMakeFiles/option_pricing.dir/binding.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++ -Doption_pricing_EXPORTS -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -isystem /Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -isystem /opt/anaconda3/envs/crypto_pricing/include/python3.10 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -fPIC -fvisibility=hidden -o CMakeFiles/option_pricing.dir/src/MonteCarloBarrierOption.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/MonteCarloBarrierOption.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/MonteCarloBarrierOption.cpp",
+  "output": "CMakeFiles/option_pricing.dir/src/MonteCarloBarrierOption.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++ -Doption_pricing_EXPORTS -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -isystem /Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -isystem /opt/anaconda3/envs/crypto_pricing/include/python3.10 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -fPIC -fvisibility=hidden -o CMakeFiles/option_pricing.dir/src/utils.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/utils.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/utils.cpp",
+  "output": "CMakeFiles/option_pricing.dir/src/utils.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++ -Doption_pricing_EXPORTS -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -isystem /Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -isystem /opt/anaconda3/envs/crypto_pricing/include/python3.10 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -fPIC -fvisibility=hidden -o CMakeFiles/option_pricing.dir/src/sensitivity_analysis.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/sensitivity_analysis.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/sensitivity_analysis.cpp",
+  "output": "CMakeFiles/option_pricing.dir/src/sensitivity_analysis.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++ -Doption_pricing_EXPORTS -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -isystem /Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -isystem /opt/anaconda3/envs/crypto_pricing/include/python3.10 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -fPIC -fvisibility=hidden -o CMakeFiles/option_pricing.dir/src/payoff_probability.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/payoff_probability.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/payoff_probability.cpp",
+  "output": "CMakeFiles/option_pricing.dir/src/payoff_probability.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++ -Doption_pricing_EXPORTS -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -isystem /Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -isystem /opt/anaconda3/envs/crypto_pricing/include/python3.10 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -fPIC -fvisibility=hidden -o CMakeFiles/option_pricing.dir/src/finite_difference_pricer.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/finite_difference_pricer.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/finite_difference_pricer.cpp",
+  "output": "CMakeFiles/option_pricing.dir/src/finite_difference_pricer.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++ -Doption_pricing_EXPORTS -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -isystem /Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -isystem /opt/anaconda3/envs/crypto_pricing/include/python3.10 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -fPIC -fvisibility=hidden -o CMakeFiles/option_pricing.dir/src/binomial_pricer.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/src/binomial_pricer.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/src/binomial_pricer.cpp",
+  "output": "CMakeFiles/option_pricing.dir/src/binomial_pricer.cpp.o"
+},
+{
+  "directory": "/Users/zhoupeng/Desktop/CF_coursework/build",
+  "command": "/usr/bin/clang++ -Doption_pricing_EXPORTS -I/Users/zhoupeng/Desktop/CF_coursework/include -I/Users/zhoupeng/Desktop/CF_coursework/src -I/Users/zhoupeng/Desktop/CF_coursework/test -I/Users/zhoupeng/Desktop/CF_coursework/external -isystem /Users/zhoupeng/Desktop/CF_coursework/external/pybind11/include -isystem /opt/anaconda3/envs/crypto_pricing/include/python3.10 -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=15.0 -fPIC -fvisibility=hidden -o CMakeFiles/option_pricing.dir/test/option_tester.cpp.o -c /Users/zhoupeng/Desktop/CF_coursework/test/option_tester.cpp",
+  "file": "/Users/zhoupeng/Desktop/CF_coursework/test/option_tester.cpp",
+  "output": "CMakeFiles/option_pricing.dir/test/option_tester.cpp.o"
+}
+]
